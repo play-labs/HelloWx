@@ -112,11 +112,7 @@ var Main = (function (_super) {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     };
-    /**
-     * 创建场景界面
-     * Create scene interface
-     */
-    p.startCreateScene = function () {
+    p.initWeiXin = function () {
         var bodyConfig = new BodyConfig();
         bodyConfig.appId = egret["wxAppId"];
         bodyConfig.timestamp = egret["wxTimeStamp"];
@@ -189,6 +185,13 @@ var Main = (function (_super) {
                 wx.onMenuShareTimeline(tl);
             });
         }
+    };
+    /**
+     * 创建场景界面
+     * Create scene interface
+     */
+    p.startCreateScene = function () {
+        this.initWeiXin();
         var button = new eui.Button();
         button.label = "Click!";
         button.horizontalCenter = 0;

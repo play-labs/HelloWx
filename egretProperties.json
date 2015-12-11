@@ -20,7 +20,7 @@
     },
     {
       "name": "weixinapi",
-      "path":"../egret-game-library/weixinapi/libsrc"
+      "path":"../../egret-game-library/weixinapi/libsrc"
     }
   ]
 }

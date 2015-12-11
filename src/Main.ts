@@ -114,12 +114,8 @@ class Main extends eui.UILayer {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
-    /**
-     * 创建场景界面
-     * Create scene interface
-     */
-    protected startCreateScene(): void {
-        
+    
+    private initWeiXin():void{
         var bodyConfig: BodyConfig = new BodyConfig();
         bodyConfig.appId = egret["wxAppId"];
         bodyConfig.timestamp = egret["wxTimeStamp"];
@@ -161,7 +157,7 @@ class Main extends eui.UILayer {
             'chooseCard',
             'openCard'
         ];
-        
+
         bodyConfig.debug = true;
         if(wx) {
             /*
@@ -170,11 +166,11 @@ class Main extends eui.UILayer {
             alert(bodyConfig.timestamp)
             alert(bodyConfig.signature)
                 */
-                
+
             wx.config(bodyConfig);
             wx.ready(function() {
                 //分享好友
-                var msg: BodyMenuShareAppMessage = new BodyMenuShareAppMessage;                
+                var msg: BodyMenuShareAppMessage = new BodyMenuShareAppMessage;
                 msg.title = "Egret的微信分享好友"
                 msg.desc = "Egret的微信分享好使不"
                 msg.link = egret["wxShareURL"];
@@ -194,8 +190,15 @@ class Main extends eui.UILayer {
                 tl.cancel = function() { }
                 wx.onMenuShareTimeline(tl);
             });
-        }
-        
+        } 
+    }
+    
+    /**
+     * 创建场景界面
+     * Create scene interface
+     */
+    protected startCreateScene(): void {
+        this.initWeiXin();
         
         var button = new eui.Button();
         button.label = "Click!";
